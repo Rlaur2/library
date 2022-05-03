@@ -29,7 +29,6 @@ const removeFromLibrary = (book) => {
 }
 
 const displayBooks = () => {
-    let read = '';
     myLibrary.forEach((book) => {
         let bookContainer = document.createElement('div');
         let title = document.createElement('div');
@@ -38,9 +37,9 @@ const displayBooks = () => {
         let genre = document.createElement('div');
         let read = document.createElement('div');
         if (book.read) {
-             readStatus = 'This book has been read.'
+            readStatus = 'This book has been read.'
         } else {
-             readStatus = 'This book has not been read.'
+            readStatus = 'This book has not been read.'
         };
         title.textContent = `Title: ${book.title}`;
         author.textContent = `Author: ${book.author}`
