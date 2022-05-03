@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.container {
+    width: 70vw;
+    min-height: 70vh;
+    margin: 15vh auto;
+    background-color: bisque;
+    box-shadow: 3px 3px 10px -4px;
+    border-radius: 10px;
+    padding: .5rem 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    font-size: 2rem;
+    padding: .5rem;
+}
+
+.add-book {
+    background-color: rgb(3, 68, 3);
+    color: white;
+    border-radius: 3px;
+    padding: .5rem;
+    margin: .5rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px  black;
+}
+
+.shelf{
+    display: flex;
+}
+
+.shelf > div {
+    width: 20%;
+    background-color: white;
+    margin: .5rem;
+    padding: 1rem;
+    border-right: 6px maroon solid;
+    border-top: 3px maroon solid;
+    border-bottom: 3px maroon solid;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px;
+
+}

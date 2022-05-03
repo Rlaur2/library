@@ -1,8 +1,9 @@
 const myLibrary = [];
 
 const shelf = document.querySelector('.shelf');
+const addBook = document.querySelector('.add-book');
 
-const createBook = function(title, author, pages, read, genre) {
+const CreateBook = function(title, author, pages, read, genre) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -10,7 +11,7 @@ const createBook = function(title, author, pages, read, genre) {
     this.genre = genre;
 };
 
-createBook.prototype = {
+CreateBook.prototype = {
     /*Add stuff here when needed */
 }
 
@@ -20,7 +21,8 @@ const addToLibrary = (book) => {
 };
 
 const removeFromLibrary = (book) => {
-    myLibrary.splice(book.position,1);
+    myLibrary.splice(book.position, 1);
+    /*updates each book's position in the array*/
     myLibrary.forEach((book, index) => {
         book.position = index;
     })
@@ -28,27 +30,36 @@ const removeFromLibrary = (book) => {
 
 const displayBooks = () => {
     let read = '';
-    myLibrary.forEach((e) => {
-        let div = document.createElement('div');
-        if (e.read) {
-             read = 'This book has been read.'
+    myLibrary.forEach((book) => {
+        let bookContainer = document.createElement('div');
+        let title = document.createElement('div');
+        let author = document.createElement('div');
+        let pages = document.createElement('div');
+        let genre = document.createElement('div');
+        let read = document.createElement('div');
+        if (book.read) {
+             readStatus = 'This book has been read.'
         } else {
-             read = 'This book has not been read.'
+             readStatus = 'This book has not been read.'
         };
-        div.textContent = 
-        `Title: ${e.title}.
-        Author: ${e.author}.
-        Pages: ${e.pages}.
-        Genre: ${e.genre}.
-        ${read}`;
-        shelf.appendChild(div); 
+        title.textContent = `Title: ${book.title}`;
+        author.textContent = `Author: ${book.author}`
+        pages.textContent = `Pages: ${book.pages}`
+        genre.textContent = `Genre: ${book.genre}`
+        read.textContent = `${readStatus}`
+        bookContainer.appendChild(title);
+        bookContainer.appendChild(author);
+        bookContainer.appendChild(pages);
+        bookContainer.appendChild(genre);
+        bookContainer.appendChild(read);
+        shelf.appendChild(bookContainer); 
     })
 }
 
 /* testing below */
-const maus = new createBook ('Maus','Art Spiegelman',205,false,'Historical Drama');
-const vendetta = new createBook ('V For Vendetta','Alan Moore',165, true, 'Alternative History');
-const ready = new createBook ('Ready Player One','Ernest Clive',308,true,'Youth Adventure');
+const maus = new CreateBook ('Maus','Art Spiegelman',205,false,'Historical Drama');
+const vendetta = new CreateBook ('V For Vendetta','Alan Moore',165, true, 'Alternative History');
+const ready = new CreateBook ('Ready Player One','Ernest Clive',308,true,'Youth Adventure');
 addToLibrary(maus);
 addToLibrary(vendetta);
 addToLibrary(ready);
