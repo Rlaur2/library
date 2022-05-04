@@ -2,6 +2,11 @@ const myLibrary = [];
 
 const shelf = document.querySelector('.shelf');
 const addBook = document.querySelector('.add-book');
+const bookForm = document.querySelector('.extra-container');
+/*Testing to see if more advanced selectors also work in JS.
+The answer is yes, the selector below works!*/
+const submitBook = document.querySelector('.book-form div:nth-child(6)');
+const closeButton = document.querySelector('.close');
 
 const CreateBook = function(title, author, pages, read, genre) {
     this.title = title;
@@ -54,6 +59,18 @@ const displayBooks = () => {
         shelf.appendChild(bookContainer); 
     })
 }
+
+addBook.addEventListener('click', () => {
+    bookForm.classList.remove('hidden');
+});
+
+submitBook.addEventListener('click', () => {
+   
+});
+
+closeButton.addEventListener('click', () => {
+    bookForm.classList.add('hidden');
+});
 
 /* testing below */
 const maus = new CreateBook ('Maus','Art Spiegelman',205,false,'Historical Drama');

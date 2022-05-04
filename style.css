@@ -8,7 +8,7 @@
 .container {
     width: 80vw;
     min-height: 80vh;
-    margin: 15vh auto;
+    margin: 5vh auto;
     background-color: bisque;
     box-shadow: 3px 3px 10px -4px;
     border-radius: 10px;
@@ -34,6 +34,12 @@
     box-shadow: 1px 1px 5px  black;
 }
 
+.extra-container {
+    display:flex;
+    margin: 1.5rem;
+    justify-content: center;
+}
+
 .book-form {
     display: grid;
     background-color: white;
@@ -41,7 +47,7 @@
     border-radius: 3px;
     box-shadow: 3px 3px 5px -3px;
     width: 50%;
-    margin: 1.5rem auto;
+    margin-left: .5rem;
     padding: 1rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -50,6 +56,10 @@
     'read read'
     'submit submit';
     gap: .4rem;
+}
+
+.hidden {
+    display: none;
 }
 
 .book-form > div {
@@ -103,6 +113,14 @@
     box-shadow: 1px 1px 5px  black;
 }
 
+.close {
+    margin-left: .5rem;
+    height: fit-content;
+    cursor: pointer;
+    color: red;
+
+}
+
 
 .shelf{
     display: flex;
@@ -118,5 +136,4 @@
     border-bottom: 3px maroon solid;
     border-radius: 2px;
     box-shadow: 1px 1px 5px;
-
 }
