@@ -67,6 +67,12 @@
     flex-flow: column;
 }
 
+.error {
+    border: red 1px solid;
+    padding: .075rem;
+    border-radius: 2px;
+}
+
 .book-form div:nth-child(1) {
     grid-area: title;
 }
@@ -110,7 +116,7 @@
     border-radius: 3px;
     padding: .5rem;
     cursor: pointer;
-    box-shadow: 1px 1px 5px  black;
+    box-shadow: 1px 1px 5px black;
 }
 
 .close {
@@ -118,12 +124,13 @@
     height: fit-content;
     cursor: pointer;
     color: red;
-
 }
 
 
 .shelf{
     display: flex;
+    flex-flow: wrap;
+    justify-content: center;
 }
 
 .shelf > div {
