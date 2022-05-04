@@ -20,6 +20,7 @@ const yesRadio = document.querySelector('#yes');
 const noRadio = document.querySelector('#no');
 const partialRadio = document.querySelector('#partially');
 
+
 const CreateBook = function(title, author, pages, read, genre) {
     this.title = title;
     this.author = author;
@@ -50,12 +51,14 @@ const displayBooks = () => {
         if (book.displayed) {
             return;
         }
+        let containerContainer = document.createElement('div');
         let bookContainer = document.createElement('div');
         let title = document.createElement('div');
         let author = document.createElement('div');
         let pages = document.createElement('div');
         let genre = document.createElement('div');
         let read = document.createElement('div');
+        let removeButton = document.createElement('div');
         if (book.read === 'yes') {
             readStatus = 'This book has been read.'
         } else if (book.read === 'no' ) {
@@ -64,17 +67,26 @@ const displayBooks = () => {
             readStatus = 'This book has been partially read.'
         };
         title.textContent = `Title: ${book.title}`;
-        author.textContent = `Author: ${book.author}`
-        pages.textContent = `Pages: ${book.pages}`
-        genre.textContent = `Genre: ${book.genre}`
-        read.textContent = `${readStatus}`
+        author.textContent = `Author: ${book.author}`;
+        pages.textContent = `Pages: ${book.pages}`;
+        genre.textContent = `Genre: ${book.genre}`;
+        read.textContent = `${readStatus}`;
+        removeButton.textContent = 'Remove book';
+        bookContainer.classList.add('book-container');
+        removeButton.classList.add('remove-button');
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
         bookContainer.appendChild(pages);
         bookContainer.appendChild(genre);
         bookContainer.appendChild(read);
-        shelf.appendChild(bookContainer);
+        containerContainer.appendChild(bookContainer);
+        containerContainer.appendChild(removeButton);
+        shelf.appendChild(containerContainer);
         book.displayed = true; 
+        removeButton.addEventListener('click', () => {
+            shelf.removeChild(containerContainer);
+            removeFromLibrary(book);
+        });
     })
 }
 
@@ -137,12 +149,3 @@ closeButton.addEventListener('click', () => {
     pagesInput.classList.remove('error');
     genreInput.classList.remove('error');
 });
-
-/* testing below 
-const maus = new CreateBook ('Maus','Art Spiegelman',205,false,'Historical Drama');
-const vendetta = new CreateBook ('V For Vendetta','Alan Moore',165, true, 'Alternative History');
-const ready = new CreateBook ('Ready Player One','Ernest Clive',308,true,'Youth Adventure');
-addToLibrary(maus);
-addToLibrary(vendetta);
-addToLibrary(ready);
-displayBooks();*/

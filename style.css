@@ -123,24 +123,42 @@
     margin-left: .5rem;
     height: fit-content;
     cursor: pointer;
+    /* alternative color
+    color: rgba(125,125,125,.9);*/
     color: red;
 }
 
 
-.shelf{
+.shelf {
     display: flex;
-    flex-flow: wrap;
     justify-content: center;
+    flex-flow: wrap;
 }
 
 .shelf > div {
     width: 20%;
+}
+
+.book-container {
     background-color: white;
     margin: .5rem;
     padding: 1rem;
-    border-right: 6px maroon solid;
+    border-left: 6px maroon solid;
     border-top: 3px maroon solid;
     border-bottom: 3px maroon solid;
     border-radius: 2px;
     box-shadow: 1px 1px 5px;
+}
+
+.remove-button {
+    padding: 1rem;
+    background-color: rgb(138, 15, 15);
+    width: 80%;
+    color: white;
+    margin: .4rem auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px -1px black;
 }
