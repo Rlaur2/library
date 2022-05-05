@@ -52,6 +52,8 @@ const displayBooks = () => {
             return;
         }
         let containerContainer = document.createElement('div');
+        let dropDownContainer = document.createElement('div');
+        let readDropDown = document.createElement('select');
         let bookContainer = document.createElement('div');
         let title = document.createElement('div');
         let author = document.createElement('div');
@@ -61,10 +63,22 @@ const displayBooks = () => {
         let removeButton = document.createElement('div');
         if (book.read === 'yes') {
             readStatus = 'This book has been read.'
+            readDropDown.innerHTML = `<optgroup label="Read Status"></optgroup>
+                                  <option value="yes" selected>Read</option>
+                                  <option value="no">Not read</option>
+                                  <option value="partially">Partially read</option>`;
         } else if (book.read === 'no' ) {
             readStatus = 'This book has not been read.'
+            readDropDown.innerHTML = `<optgroup label="Read Status"></optgroup>
+                                  <option value="yes">Read</option>
+                                  <option value="no" selected>Not read</option>
+                                  <option value="partially">Partially read</option>`;
         } else {
             readStatus = 'This book has been partially read.'
+            readDropDown.innerHTML = `<optgroup label="Read Status"></optgroup>
+                                  <option value="yes">Read</option>
+                                  <option value="no">Not read</option>
+                                  <option value="partially" selected>Partially read</option>`;
         };
         title.textContent = `Title: ${book.title}`;
         author.textContent = `Author: ${book.author}`;
@@ -74,15 +88,29 @@ const displayBooks = () => {
         removeButton.textContent = 'Remove book';
         bookContainer.classList.add('book-container');
         removeButton.classList.add('remove-button');
+        dropDownContainer.appendChild(readDropDown);
         bookContainer.appendChild(title);
         bookContainer.appendChild(author);
         bookContainer.appendChild(pages);
         bookContainer.appendChild(genre);
         bookContainer.appendChild(read);
+        containerContainer.appendChild(dropDownContainer);
         containerContainer.appendChild(bookContainer);
         containerContainer.appendChild(removeButton);
         shelf.appendChild(containerContainer);
-        book.displayed = true; 
+        book.displayed = true;
+        readDropDown.addEventListener('click', () => {
+            if (readDropDown.value === 'yes') {
+                book.read = 'yes';
+                read.textContent = 'This book has been read.'
+            } else if (readDropDown.value === 'no') {
+                book.read = 'no';
+                read.textContent = 'This book has not been read.'
+            } else {
+                book.read = 'partial';
+                read.textContent = 'This book has been partially read.'
+            }
+        });
         removeButton.addEventListener('click', () => {
             shelf.removeChild(containerContainer);
             removeFromLibrary(book);
