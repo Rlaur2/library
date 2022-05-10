@@ -31,23 +31,19 @@ const CreateBook = function(title, author, pages, read, genre) {
 };
 
 CreateBook.prototype = {
-    /*Add stuff here when needed */
-}
-
-
-const addToLibrary = (book) => {
-    myLibrary.push(book);
-    /*this associates each book with it's position in the array which will
-    be needed when removing the book from the array. */
-    book.position = myLibrary.length - 1;
-};
-
-const removeFromLibrary = (book) => {
-    myLibrary.splice(book.position, 1);
-    /*updates each book's position in the array*/
-    myLibrary.forEach((book, index) => {
-        book.position = index;
-    })
+    addToLibrary: function() {
+        myLibrary.push(this);
+        /*this associates each book with it's position in the array which will
+        be needed when removing the book from the array. */
+        this.position = myLibrary.length - 1;
+    },
+    removeFromLibrary: function() {
+        myLibrary.splice(this.position, 1);
+        /*updates each book's position in the array*/
+        myLibrary.forEach((book, index) => {
+            book.position = index;
+        })
+    }
 }
 
 const displayBooks = () => {
@@ -131,7 +127,7 @@ const displayBooks = () => {
         from the page and from the myLibrary array*/
         removeButton.addEventListener('click', () => {
             shelf.removeChild(containerContainer);
-            removeFromLibrary(book);
+            book.removeFromLibrary();
         });
     })
 }
@@ -184,7 +180,7 @@ submitBook.addEventListener('click', () => {
     newBook = new CreateBook(title,author,pages,read,genre);
     /* adds the newly created book to the myLibrary array, displays it
     and it's info on the page in a book card, and then resets the form. */
-    addToLibrary(newBook);
+    newBook.addToLibrary();
     displayBooks();
     reset();
 });
