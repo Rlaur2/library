@@ -22,28 +22,29 @@ const noRadio = document.querySelector('#no');
 const partialRadio = document.querySelector('#partially');
 
 /* Constructor for the books */
-const CreateBook = function(title, author, pages, read, genre) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.genre = genre;
-};
+class CreateBook {
+    constructor (title, author, pages, read, genre) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.genre = genre;
+    }
 
-CreateBook.prototype = {
-    addToLibrary: function() {
+    addToLibrary() {
         myLibrary.push(this);
         /*this associates each book with it's position in the array which will
         be needed when removing the book from the array. */
         this.position = myLibrary.length - 1;
-    },
-    removeFromLibrary: function() {
+    };
+
+    removeFromLibrary() {
         myLibrary.splice(this.position, 1);
         /*updates each book's position in the array*/
         myLibrary.forEach((book, index) => {
             book.position = index;
         })
-    }
+    };
 }
 
 const displayBooks = () => {
